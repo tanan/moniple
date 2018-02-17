@@ -1,0 +1,16 @@
+[application]
+port=8100
+
+[database]
+host="localhost"
+port=3307
+schema="feedback"
+user="root"
+password="face"
+
+[rabbitmq]
+host="127.0.0.1"
+port=5672
+user="guest"
+password="guest"
+qname="slack"
