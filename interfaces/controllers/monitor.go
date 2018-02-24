@@ -3,7 +3,7 @@ package controllers
 import (
 	"github.com/tanan/moniple/usecase/interactor"
 	"github.com/tanan/moniple/interfaces/model"
-	"github.com/tanan/moniple/interfaces/requester"
+	"github.com/tanan/moniple/interfaces/handler"
 )
 
 type MonitorController struct {
@@ -13,7 +13,7 @@ type MonitorController struct {
 func NewMonitorController() MonitorController {
 	return MonitorController{
 		Interactor: interactor.MonitorInteractor{
-			Repository: requester.MontiorRequester{},
+			Repository: handler.MonitorHandler{},
 		},
 	}
 }

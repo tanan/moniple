@@ -5,6 +5,8 @@ import (
 	//"github.com/bamzi/jobrunner"
 	"github.com/tanan/moniple/interfaces/model"
 	"github.com/tanan/moniple/interfaces/controllers"
+	"github.com/tanan/moniple/infrastracture/database"
+	"github.com/tanan/moniple/config"
 )
 
 var Router *gin.Engine
@@ -12,7 +14,8 @@ var Router *gin.Engine
 func init() {
 	router := gin.Default()
 
-	//sqlHandler := database.NewSqlHandler(config.GetDBConnInfo())
+	sqlHandler := database.NewSqlHandler(config.GetDBConnInfo())
+	scheduleController := controllers.NewScheduleController(sqlHandler)
 	monitorController := controllers.NewMonitorController()
 
 	router.GET("/system", func(c *gin.Context) {

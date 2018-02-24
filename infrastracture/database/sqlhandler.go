@@ -40,3 +40,21 @@ func (handler *SqlHandler) Find(out interface{}, where ...interface{}) error {
 	}
 	return nil
 }
+
+func (handler *SqlHandler) Create(value interface{}) error {
+	if err := handler.Conn.Create(value).Error; err != nil {
+		return err
+	}
+	return nil
+}
+
+func (handler *SqlHandler) Save(value interface{}) error {
+	if err := handler.Conn.Save(value).Error; err != nil {
+		return err
+	}
+	return nil
+}
+
+func (handler *SqlHandler) NewRecord(value interface{}) bool {
+	return handler.Conn.NewRecord(value)
+}

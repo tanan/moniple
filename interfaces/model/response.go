@@ -1,7 +1,16 @@
 package model
 
 type MonitorResponse struct {
-	Status int
+	Status    int
 	TimeTaken int
-	Content string
+	Content   string
+}
+
+type ScheduleResponse struct {
+	Status int
+}
+
+type ErrorResponse struct {
+	Status  int
+	Message string
 }
