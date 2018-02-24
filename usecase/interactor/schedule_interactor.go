@@ -1,8 +1,8 @@
 package interactor
 
 import (
-	"github.com/tanan/moniple/usecase/repository"
 	"github.com/tanan/moniple/domain"
+	"github.com/tanan/moniple/usecase/repository"
 )
 
 type ScheduleInteractor struct {

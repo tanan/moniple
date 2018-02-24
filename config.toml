@@ -1,16 +1,9 @@
 [application]
-port=8100
+port=8200
 
 [database]
 host="localhost"
 port=3307
-schema="feedback"
+schema="moniple"
 user="root"
 password="face"
-
-[rabbitmq]
-host="127.0.0.1"
-port=5672
-user="guest"
-password="guest"
-qname="slack"

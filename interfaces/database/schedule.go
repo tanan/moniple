@@ -25,10 +25,11 @@ func (r ScheduleRepository) FindById(id domain.ScheduleId) (domain.Schedule, err
 }
 
 func (r ScheduleRepository) Store(schedule domain.Schedule) error {
-	s := model.Schedule{
+	s := &model.Schedule{
 		Id:       int64(schedule.Id),
 		Name:     schedule.Name,
 		URL:      schedule.URL,
+		Method:   schedule.Method,
 		Interval: schedule.Interval,
 		Status:   r.getStatus(schedule.Active),
 	}
