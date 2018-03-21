@@ -1,45 +1,34 @@
 package rest
 
 import (
-	"github.com/gin-gonic/gin"
-	//"github.com/bamzi/jobrunner"
+	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
 	"github.com/tanan/moniple/config"
-	"github.com/tanan/moniple/infrastracture/database"
-	"github.com/tanan/moniple/interfaces/controllers"
-	"github.com/tanan/moniple/interfaces/model"
+	"github.com/tanan/moniple/infrastracture/persistence/datastore"
+	"github.com/tanan/moniple/interfaces/registry"
+	"net/http"
 )
 
-var Router *gin.Engine
+var Router *echo.Echo
 
 func init() {
-	router := gin.Default()
+	router := echo.New()
 
-	sqlHandler := database.NewSqlHandler(config.GetDBConnInfo())
-	scheduleController := controllers.NewScheduleController(sqlHandler)
-	monitorController := controllers.NewMonitorController()
+	router.Use(middleware.Logger())
+	router.Use(middleware.Recover())
+
+	r := registry.NewRegistry(datastore.NewSqlHandler(config.GetDBConnInfo()))
 
 	//router.GET("/jobrunner/status", func(c *gin.Context) {
 	//	c.JSON(200, jobrunner.StatusJson())
 	//})
 
-	router.GET("/system", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"status": "OK",
-		})
-	})
-
-	router.GET("/endpoint", func(c *gin.Context) {
-		monitorController.Get(model.MonitorRequest{
-			URL:    c.Query("url"),
-			Method: "GET",
-		}, c)
-	})
-
-	router.POST("/schedule/:id", func(c *gin.Context) {
-		scheduleController.Store(model.ScheduleRequest{
-			Id: c.Param("id"),
-		}, c)
-	})
+	router.GET("/system", ping)
+	router.PUT("/schedule/save", r.Handler.SaveSchedule)
 
 	Router = router
+}
+
+func ping(c echo.Context) error {
+	return c.String(http.StatusOK, "OK!!")
 }

@@ -1,4 +1,4 @@
-package model
+package api
 
 type MonitorRequest struct {
 	URL    string
@@ -6,7 +6,7 @@ type MonitorRequest struct {
 }
 
 type ScheduleRequest struct {
-	Id       string
+	ID       string
 	Name     string
 	URL      string
 	Method   string

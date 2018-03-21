@@ -2,8 +2,8 @@
 port=8200
 
 [database]
-host="localhost"
-port=3307
+host=<database host>
+port=<database port>
 schema="moniple"
-user="root"
-password="face"
+user=<database user>
+password=<database pass>

@@ -1,3 +1,5 @@
+CREATE DATABASE `moniple`;
+
 CREATE TABLE `moniple`.`schedules` (
   `id` INT NOT NULL,
   `name` VARCHAR(45) NOT NULL,

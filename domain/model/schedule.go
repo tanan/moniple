@@ -1,9 +1,9 @@
-package domain
+package model
 
-type ScheduleId int64
+type ScheduleID int64
 
 type Schedule struct {
-	Id       ScheduleId
+	ID       ScheduleID
 	Name     string
 	URL      string
 	Method   string
