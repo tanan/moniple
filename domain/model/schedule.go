@@ -18,3 +18,10 @@ func (s *Schedule) SetActive(status string) {
 	}
 	s.Active = false
 }
+
+func (s *Schedule) GetActive() string {
+	if s.Active {
+		return "active"
+	}
+	return "inactive"
+}

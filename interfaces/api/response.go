@@ -7,7 +7,12 @@ type MonitorResponse struct {
 }
 
 type ScheduleResponse struct {
-	Status int
+	ID       int
+	Name     string
+	URL      string
+	Method   string
+	Interval int64
+	Status   string
 }
 
 type ErrorResponse struct {

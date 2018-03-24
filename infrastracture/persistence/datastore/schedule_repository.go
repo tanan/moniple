@@ -42,7 +42,12 @@ func (r *scheduleRepository) Store(schedule model.Schedule) error {
 }
 
 func (r *scheduleRepository) FindById(id model.ScheduleID) (model.Schedule, error) {
-	return model.Schedule{}, nil
+	var m model.Schedule
+	err := r.Find(&m, "id = ?", id)
+	if err != nil {
+		return model.Schedule{}, nil
+	}
+	return m, nil
 }
 
 func (r scheduleRepository) getStatus(active bool) string {
