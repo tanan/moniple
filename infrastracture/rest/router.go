@@ -24,9 +24,10 @@ func init() {
 	//})
 
 	router.GET("/system", ping)
-	router.PUT("/schedule/save", r.Handler.SaveSchedule)
-	router.GET("/schedules/:id", r.Handler.GetSchedule)
-	router.GET("/schedules", r.Handler.ListSchedule)
+	router.PUT("/schedule/save", r.ScheduleHandler.SaveSchedule)
+	router.GET("/schedules/:id", r.ScheduleHandler.GetSchedule)
+	router.GET("/schedules", r.ScheduleHandler.ListSchedule)
+	router.POST("/monitor", r.MonitorHandler.CheckEndpoint)
 
 	Router = router
 }

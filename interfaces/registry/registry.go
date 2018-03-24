@@ -8,18 +8,20 @@ import (
 )
 
 type Registry struct {
-	useCase    usecase.ScheduleUseCase
-	repository repository.ScheduleRepository
-	Handler    handler.ScheduleHandler
+	useCase         usecase.ScheduleUseCase
+	repository      repository.ScheduleRepository
+	ScheduleHandler handler.ScheduleHandler
+	MonitorHandler  handler.MonitorHandler
 }
 
 func NewRegistry(sqlHandler *datastore.SQLHandler) *Registry {
 	repository := NewScheduleRepository(sqlHandler)
 	usecase := NewScheduleUseCase(repository)
 	return &Registry{
-		repository: repository,
-		useCase:    usecase,
-		Handler:    handler.NewScheduleHandler(usecase),
+		repository:      repository,
+		useCase:         usecase,
+		ScheduleHandler: handler.NewScheduleHandler(usecase),
+		MonitorHandler:  handler.NewMonitorHandler(),
 	}
 }
 

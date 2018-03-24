@@ -2,7 +2,7 @@ package api
 
 type MonitorResponse struct {
 	Status    int
-	TimeTaken int
+	TimeTaken float64
 	Content   string
 }
 

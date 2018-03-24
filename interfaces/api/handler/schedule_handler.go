@@ -1,7 +1,6 @@
 package handler
 
 import (
-	"fmt"
 	"github.com/labstack/echo"
 	"github.com/tanan/moniple/application"
 	"github.com/tanan/moniple/domain/model"
