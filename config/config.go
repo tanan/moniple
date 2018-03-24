@@ -3,6 +3,7 @@ package config
 import (
 	"fmt"
 	"github.com/BurntSushi/toml"
+	"os"
 	"strconv"
 )
 
@@ -36,7 +37,8 @@ func GetDBConnInfo() string {
 func init() {
 	if config == nil {
 		config = &Config{}
-		_, err := toml.DecodeFile("config.toml", &config)
+		path := os.Getenv("MONIPLE_CONFIG_PATH")
+		_, err := toml.DecodeFile(path, &config)
 		if err != nil {
 			fmt.Errorf("err: %v", err)
 		}
